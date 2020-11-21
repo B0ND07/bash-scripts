@@ -6,5 +6,5 @@
 
 2- git clone https://github.com/Hashimkp/bash-scripts.git -b main bash-sh
 
-3- bash bash-sh/aosp.sh
+3- bash bash-scripts/aosp.sh
 
