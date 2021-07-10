@@ -1,0 +1,60 @@
+#!/bin/bash
+
+mkdir -p /tmp/kernel
+
+sudo apt-get install -y bc python-dev flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip
+
+cd /tmp/kernel
+
+#kernel tree
+git clone https://github.com/b0nd07/kernel_realme_RMX1971 -b caftag -j8 --depth=1
+
+#Clang
+git clone https://github.com/kdrag0n/proton-clang --depth=1 -j8
+
+cd /tmp/kernel/kern*
+ 
+
+#ENVs
+token="1620494015:AAHgMqdP4x6SRr9QZ9mLxDI6FnrYAf8j4zI"
+chat_id="-1001409435295"
+Code=$(date +%Y%m%d%H%M)
+Kernel="kernelbrr"
+
+
+# Normal build steps
+git revert b3a9e7ebe32d5a15c9a2404dc628f8c1aabc6792
+# Kernel Build
+export ARCH=arm64 
+export SUBARCh=arm64
+export KBUILD_BUILD_USER=bond
+export KBUILD_BUILD_HOST=ubuntu
+export PATH="/tmp/kernel/proton-clang/bin:$PATH"
+mkdir ../out
+make O=../out KharaMe_defconfig ARCH=arm64 -j8 CROSS_COMPILE=aarch64-linux-gnu- CC=clang CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+make O=../out ARCH=arm64 -j8 CROSS_COMPILE=aarch64-linux-gnu- CC=clang CROSS_COMPILE_ARM32=arm-linux-gnueabi- && sleep 10m 
+
+
+git clone https://github.com/b0nd07/AnyKernel3.git AnyKernel
+
+cp ../out/arch/arm64/boot/Image.gz-dtb AnyKernel/Image.gz-dtb
+
+# Zipping
+function zipping() {
+    cd AnyKernel || exit 1
+    zip -r9 $Kernel-$Code.zip *
+    cd ..
+}
+#push
+function push() {
+    cd AnyKernel
+    ZIP=$(echo *.zip)
+    curl -F document=@$ZIP "https://api.telegram.org/bot$token/sendDocument" \
+        -F chat_id="$chat_id" \
+        -F "disable_web_page_preview=true" \
+        -F "parse_mode=html" \
+    #    -F caption="<b>• Build Completed Successfully •</b>"
+}       
+
+zipping
+push
