@@ -19,11 +19,8 @@ cd /tmp/kernel/kern*
 token="1620494015:AAHgMqdP4x6SRr9QZ9mLxDI6FnrYAf8j4zI"
 chat_id="-1001409435295"
 Code=$(date +%Y%m%d%H%M)
-Kernel="kernelbrr"
+Kernel="splintertest"
 
-
-# Normal build steps
-git revert b3a9e7ebe32d5a15c9a2404dc628f8c1aabc6792
 # Kernel Build
 export ARCH=arm64 
 export SUBARCh=arm64
