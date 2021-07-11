@@ -2,7 +2,7 @@
 
 # Telegram Config
 TOKEN="" # Bot Token
-CHATID="-1001180591337"
+CHATID=""
 BOT_MSG_URL="https://api.telegram.org/bot${TOKEN}/sendMessage"
 BOT_LOG_URL="https://api.telegram.org/bot${TOKEN}/sendDocument"
 BOT_STICKER_URL="https://api.telegram.org/bot${TOKEN}/sendSticker"
