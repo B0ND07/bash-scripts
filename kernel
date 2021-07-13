@@ -16,8 +16,8 @@ cd /tmp/kernel/kern*
  
 
 #ENVs
-token="1620494015:AAHgMqdP4x6SRr9QZ9mLxDI6FnrYAf8j4zI"
-chat_id="-1001409435295"
+token="1620494015:AAFvIK6SjB7sBqhge-VQdgMM1rRYfQ05SRU"
+chat_id="-1001424291555"
 Code=$(date +%Y%m%d%H%M)
 Kernel="splintertest"
 
