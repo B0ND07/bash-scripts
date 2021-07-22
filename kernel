@@ -7,7 +7,7 @@ apt-get install -y bc python-dev flex bison gperf build-essential zip curl zlib1
 cd /tmp/kernel
 
 #kernel tree
-git clone https://github.com/b0nd07/kernel_realme_RMX1971 -b caftag -j8 --depth=1
+git clone https://github.com/b0nd07/kernel_realme_RMX1971 -b eleven -j8 --depth=1
 
 #Clang
 git clone https://github.com/kdrag0n/proton-clang --depth=1 -j8
@@ -19,7 +19,7 @@ cd /tmp/kernel/kern*
 token="1620494015:AAFvIK6SjB7sBqhge-VQdgMM1rRYfQ05SRU"
 chat_id="-1001424291555"
 Code=$(date +%Y%m%d%H%M)
-Kernel="splintertest"
+Kernel="splnter"
 
 # Kernel Build
 export ARCH=arm64 
